@@ -24,7 +24,7 @@ const requestHandler = (req, res) => {
     });
     return req.on("end", () => {
       const parseBody = Buffer.concat(body).toString();
-      const message = parseBody.split("=")[1];
+      const message = parseBody.split("=")[0];
       fs.writeFile("message.txt", message, (err) => {
         if (err) {
           console.log(err);
@@ -46,6 +46,8 @@ const requestHandler = (req, res) => {
 
 // module.exports.handler=requestHandler;
 // module.exports.someText='this is some text';
+
+
 
 exports.handler=requestHandler;
 exports.someText='this is some text';
